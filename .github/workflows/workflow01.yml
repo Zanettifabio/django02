@@ -31,3 +31,6 @@ jobs:
       - uses: pypa/gh-action-pip-audit@v1.0.8
         with:
           inputs: requirements.txt
+
+      - name: Testes automáticos
+        run: pipenv run pytest
