@@ -33,7 +33,7 @@ jobs:
           inputs: requirements.txt
 
       - name: Setup env
-        run: cp env-sample .env
+        run: cp contrib/env-sample .env
 
       - name: Testes automáticos
         run: pipenv run pytest --cov=pypro02
