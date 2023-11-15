@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
+from dj_database_url import parse as db_url
 from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -74,13 +74,15 @@ WSGI_APPLICATION = 'pypro02.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+default_db_url = 'sqlite:///' / BASE_DIR / 'db.sqlite3'
 
+DATABASES = {
+    'default': config(
+        'DATABASE_URL',
+        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+        cast=db_url
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
