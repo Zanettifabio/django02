@@ -3,7 +3,7 @@ name: workflow_01
 on: push
 
 jobs:
-  CI:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -47,3 +47,14 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: pipenv run codecov
+
+  Deploy:
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # confirmando necessidade
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
