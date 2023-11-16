@@ -13,7 +13,6 @@ RUN pip install pipenv
 COPY Pipfile Pipfile.lock /code/
 RUN pipenv install --deploy --system
 COPY . /code
-RUN cp contrib/env-sample .env
 
 RUN python manage.py collectstatic --no-input
 
