@@ -1,3 +1,8 @@
 DEBUG = True
 SECRET_KEY = secret
 ALLOWED_HOSTS = localhost, 127.0.0.1,
+
+# Configurações do AWS
+AWS_ACCESS_KEY_ID =
+AWS_SECRET_ACCESS_KEY =
+AWS_STORAGE_BUCKET_NAME =
