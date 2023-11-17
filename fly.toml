@@ -23,3 +23,7 @@ console_command = "/code/manage.py shell"
 [[statics]]
   guest_path = "/code/static"
   url_prefix = "/static/"
+
+#[deploy]
+#  release_command = "python manage.py migrate --noinput"
+#  release_command = "python manage.py collectstatic --no-input"

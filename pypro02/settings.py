@@ -29,6 +29,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'collectfast',
     'django.contrib.staticfiles',
     'pypro02.base',
 ]
@@ -119,11 +123,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# Configuração de ambiente de desenvolvimento
+# Configuração de ambiente local de desenvolvimento
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'  # Variável configurada para upload de arquivos para o site
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')  # Variável configurada para upload de arquivos para o site
+COLLECTFAST_ENABLED = False  # Recomendado que seja falso no ambiente local de desenvolvimento
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -145,6 +150,8 @@ if AWS_ACCESS_KEY_ID:
     AWS_QUERYSTRING_AUTH = True
     AWS_S3_CUSTOM_DOMAIN = None
     AWS_DEFAULT_ACL = 'private'
+
+    COLLECTFAST_ENABLED = True  # Deve ser True no ambiente remoto, quando os arquivos estáticos serão coletados
 
     # Static Assets
     STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
