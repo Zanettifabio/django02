@@ -14,8 +14,9 @@ COPY Pipfile Pipfile.lock /code/
 RUN pipenv install --deploy --system
 COPY . /code
 
-RUN python manage.py collectstatic --no-input
+# RUN python manage.py collectstatic --no-input
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "pypro02.wsgi"]
+ENTRYPOINT ["./start.sh"]
+# CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "pypro02.wsgi"]
