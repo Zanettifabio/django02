@@ -31,8 +31,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 AUTH_USER_MODEL = 'base.User'
 
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
+# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 # Application definition
 
@@ -141,6 +140,12 @@ CSRF_TRUSTED_ORIGINS = ['https://zanetti-fly-app.fly.dev']
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 
+INTERNAL_IPS = config('INTERNAL_IPS', cast=Csv(), default='127.0.0.1')
+
+# Configuração Django Debug Toolbar
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
 
 # STORAGE CONFIGURATION IN S3 AWS
 if AWS_ACCESS_KEY_ID:
@@ -154,6 +159,7 @@ if AWS_ACCESS_KEY_ID:
     AWS_DEFAULT_ACL = 'private'
 
     COLLECTFAST_ENABLED = True  # Deve ser True no ambiente remoto, quando os arquivos estáticos serão coletados
+    COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
 
     # Static Assets
     STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
