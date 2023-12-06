@@ -3,7 +3,7 @@ SECRET_KEY = secret
 ALLOWED_HOSTS = localhost, 127.0.0.1,
 INTERNAL_IPS = 127.0.0.1
 SENTRY_DSN =
-DATABASE_URL: postgres://devpro:devpro@postgres:5432/postgres
+DATABASE_URL: postgres://devpro:devpro@postgres:5432/devpro
 
 # Configurações do AWS
 AWS_ACCESS_KEY_ID =
