@@ -54,6 +54,8 @@ jobs:
 
       - name: Testes automáticos
         run: pipenv run pytest --cov=pypro02
+        env:
+          POSTGRES_HOST: postgres
 
 #      - name: Upload coverage reports to Codecov
 #        uses: codecov/codecov-action@v3
