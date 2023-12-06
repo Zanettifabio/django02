@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
 #    env:
-#      DATABASE_URL: postgres://devpro:devpro@postgres:5432/postgres
+#      DATABASE_URL: postgres://devpro:devpro@postgres:5432/devpro
 
     services:
       postgres:
@@ -54,8 +54,8 @@ jobs:
 
       - name: Testes automáticos
         run: pipenv run pytest --cov=pypro02
-        env:
-          POSTGRES_HOST: postgres
+#        env:
+#          POSTGRES_HOST: postgres
 
 #      - name: Upload coverage reports to Codecov
 #        uses: codecov/codecov-action@v3
