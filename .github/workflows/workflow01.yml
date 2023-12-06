@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DATABASE_URL: postgres://devpro:devpro@postgres:5432/devpro
+      DATABASE_URL: postgres://devpro:devpro@postgres:5432/postgres
 
     services:
       postgres:
