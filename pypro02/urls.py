@@ -21,7 +21,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pypro02.base.urls')),
-    path('aperitivos/', include('pypro02.aperitivos.urls'))
+    path('aperitivos/', include('pypro02.aperitivos.urls')),
+    path('modulos/', include('pypro02.modulos.urls'))
 ]
 
 if settings.DEBUG:
