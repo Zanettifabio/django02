@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'pypro02.base',
     'pypro02.aperitivos',
     'pypro02.modulos',
+    'ordered_model',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pypro02.modulos.context_processors.listar_modulos',
             ],
         },
     },
