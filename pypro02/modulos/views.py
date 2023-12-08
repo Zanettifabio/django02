@@ -1,6 +1,7 @@
-# from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render
+from pypro02.modulos import facade
 
 
 def detalhe(request, slug):
-    return HttpResponse('Detalhe do módulo')
+    modulo = facade.encontrar_modulo(slug)
+    return render(request, 'modulos/modulo_detalhe.html', context={'modulo': modulo})
