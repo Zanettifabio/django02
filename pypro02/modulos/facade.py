@@ -9,3 +9,7 @@ def listar_modulos_ordenados() -> List[Modulo]:  # Anotation que indica que o re
     :return: Lista dos módulos ordenados pelo título.
     """
     return list(Modulo.objects.order_by('order').all())
+
+
+def encontrar_modulo(slug) -> Modulo:
+    return Modulo.objects.get(slug=slug)
