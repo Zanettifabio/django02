@@ -1,5 +1,5 @@
 from typing import List
-from pypro02.modulos.models import Modulo
+from pypro02.modulos.models import Modulo, Aula
 
 
 def listar_modulos_ordenados() -> List[Modulo]:  # Anotation que indica que o retorno será uma lista e cada objeto desta
@@ -17,3 +17,7 @@ def encontrar_modulo(slug) -> Modulo:
 
 def listar_aulas_de_modulo_ordenadas(modulo):
     return list(modulo.aula_set.order_by('order').all())
+
+
+def encontrar_aula(slug):
+    return Aula.objects.get(slug=slug)
