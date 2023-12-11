@@ -2,7 +2,7 @@ import pytest
 from pypro02.django_assertions import assert_contains
 from django.urls import reverse
 from model_mommy import mommy
-from pypro02.modulos.models import Modulo
+from pypro02.modulos.models import Modulo, Aula
 
 
 @pytest.fixture
@@ -11,7 +11,12 @@ def modulo(db):
 
 
 @pytest.fixture
-def resp(client, modulo: Modulo):
+def aulas(modulo):
+    return mommy.make(Aula, 3, modulo=modulo)
+
+
+@pytest.fixture
+def resp(client, modulo: Modulo, aulas):
     resp = client.get(reverse('modulos:detalhe', kwargs={'slug': modulo.slug}))
     return resp
 
@@ -26,3 +31,8 @@ def test_publico_do_modulo(resp, modulo: Modulo):
 
 def test_descricao_do_modulo(resp, modulo: Modulo):
     assert_contains(resp, modulo.descricao)
+
+
+def test_titulo_aulas(resp, aulas):
+    for aula in aulas:
+        assert_contains(resp, aula.titulo)

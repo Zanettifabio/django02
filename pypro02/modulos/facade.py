@@ -13,3 +13,7 @@ def listar_modulos_ordenados() -> List[Modulo]:  # Anotation que indica que o re
 
 def encontrar_modulo(slug) -> Modulo:
     return Modulo.objects.get(slug=slug)
+
+
+def listar_aulas_de_modulo_ordenadas(modulo):
+    return list(modulo.aula_set.order_by('order').all())

@@ -14,4 +14,4 @@ class AulaAdmin(OrderedModelAdmin):
     list_display = ('titulo', 'modulo', 'order', 'move_up_down_links')
     prepopulated_fields = {'slug': ('titulo',)}
     list_filter = ('modulo',)
-    ordering = ('modulo', 'orderfgdg')
+    ordering = ('modulo', 'order')
