@@ -5,6 +5,13 @@
 {% block description %}Página com vídeo gratuito{% endblock description %}
 
 {% block body %}
+<nav aria-label="breadcrumb" class="p-2 bg-secondary-subtle">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item nav-item"><a class="nav-link text-primary d-flex" href="#">Home</a></li>
+        <li class="breadcrumb-item nav-item"><a class="nav-link text-primary d-flex" href="{{ aula.modulo.get_absolute_url }}">{{ aula.modulo.titulo }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ aula.titulo }}</li>
+    </ol>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
