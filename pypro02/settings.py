@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'pypro02.aperitivos',
     'pypro02.modulos',
     'ordered_model',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
