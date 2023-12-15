@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Índice de Turmas{% endblock title %}
+{% block description %}Página com todas as turmas do curso{{ modulo.titulo }}{% endblock description %}
+
+{% block body %}
+<div class="container">
+    {% for modulo in modulos %}
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="pt-4 pb-3">{{ modulo.titulo }}</h1>
+                    <dl>
+                        <dt>Plúblico</dt>
+                        <dd>{{ modulo.publico }}</dd>
+                        <dt>Descrição</dt>
+                        <dd>{{ modulo.descricao }}</dd>
+                    </dl>
+                <h2>Aulas</h2>
+                    <ol>
+                        {% for aula in modulo.aulas %}
+                            <li><a href="{{ aula.get_absolute_url }}">{{ aula.titulo }}</a></li>
+                        {% endfor %}
+                    </ol>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock body %}
