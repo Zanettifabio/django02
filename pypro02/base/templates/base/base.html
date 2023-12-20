@@ -42,6 +42,28 @@
 							</ul>
 						</li>
 					</ul>
+					{% if user.is_authenticated %}
+						<ul class="navbar-nav mb-2 mb-lg-0">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+								   aria-expanded="false">
+									{{ user.first_name }}
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<div class="dropdown-item">
+											<form action="{% url 'logout' %}" method="POST">
+												{% csrf_token %}
+												<button class="btn btn-danger" type="submit">Sair</button>
+											</form>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					{% else %}
+						<a class="btn btn-light" href="{% url 'login' %}">Entrar</a>
+					{% endif %}
 				</div>
 			</div>
 		</nav>
