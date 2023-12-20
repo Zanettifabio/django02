@@ -24,7 +24,7 @@ urlpatterns = [
     path('aperitivos/', include('pypro02.aperitivos.urls')),
     path('modulos/', include('pypro02.modulos.urls')),
     path('turmas/', include('pypro02.turmas.urls')),
-    path("contas/", include("django.contrib.auth.urls"))
+    path('contas/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

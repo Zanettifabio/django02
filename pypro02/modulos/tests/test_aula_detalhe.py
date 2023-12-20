@@ -16,7 +16,13 @@ def aula(modulo):
 
 
 @pytest.fixture
-def resp(client, aula):
+def resp(client_com_usuario_logado, aula):
+    resp = client_com_usuario_logado.get(reverse('modulos:aula', kwargs={'slug': aula.slug}))
+    return resp
+
+
+@pytest.fixture
+def resp_sem_usuario_logado(client, aula):
     resp = client.get(reverse('modulos:aula', kwargs={'slug': aula.slug}))
     return resp
 
@@ -32,3 +38,8 @@ def test_vimeo(resp, aula):
 def test_modulo_breadcrumb(resp, modulo: Modulo):
     assert_contains(resp, f'<li class="breadcrumb-item nav-item"><a class="nav-link text-primary d-flex" href="'
                           f'{modulo.get_absolute_url()}">{modulo.titulo}</a></li>')
+
+
+def test_usuario_nao_logado_redirect(resp_sem_usuario_logado):
+    assert resp_sem_usuario_logado.status_code == 302
+    assert resp_sem_usuario_logado.url.startswith(reverse('login'))
