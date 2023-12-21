@@ -41,6 +41,10 @@ LOGOUT_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
+    'pypro02.turmas',
+    'pypro02.base',
+    'pypro02.aperitivos',
+    'pypro02.modulos',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,12 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'collectfast',
     'django.contrib.staticfiles',
-    'pypro02.base',
-    'pypro02.aperitivos',
-    'pypro02.modulos',
     'ordered_model',
-    'django_extensions',
-    'pypro02.turmas',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -86,6 +86,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pypro02.wsgi.application'
+
+
+# Configurações de envio de email
+
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 
 
 # Database
