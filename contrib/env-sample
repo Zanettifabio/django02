@@ -9,3 +9,11 @@ DATABASE_URL: postgres://devpro:devpro@postgres:5432/devpro
 AWS_ACCESS_KEY_ID =
 AWS_SECRET_ACCESS_KEY =
 AWS_STORAGE_BUCKET_NAME =
+
+# Configurações de envio de email
+EMAIL_BACKEND = django.core.mail.backends.console.EmailBackend
+EMAIL_HOST = localhost, 127.0.0.1,
+EMAIL_PORT = 25
+EMAIL_HOST_USER =
+EMAIL_HOST_PASSWORD =
+EMAIL_USE_TLS = True
