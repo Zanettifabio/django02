@@ -2,7 +2,7 @@ services:
   database:
     container_name: cursodjango_database
     image: postgres
-    restart: always
+    restart: no
     volumes:
       - ./.pgdata:/var/lib/postgresql/data
     environment:
